@@ -1,0 +1,11 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow"><meta name="referrer" content="no-referrer">
+<title>Mon Drive privé — connexion</title>
+<style>body{margin:0;min-height:100vh;display:grid;place-items:center;background:#0f172a;color:#cbd5e1;font:16px -apple-system,system-ui,sans-serif;text-align:center;padding:16px;touch-action:manipulation}a{color:#10b981}</style>
+</head><body><div id="m">Connexion au Mac…</div>
+<script>
+fetch("https://raw.githubusercontent.com/Mrthomaslef/assurance/main/endpoint.json?t="+Date.now(),{cache:"no-store"})
+ .then(r=>r.json()).then(ep=>{ if(!ep.tunnelUrl) throw 0; location.replace(ep.tunnelUrl.replace(/\/$/,"")+"/?mode=drive"); })
+ .catch(()=>{ document.getElementById("m").innerHTML='Le Mac est hors ligne ou injoignable.<br><br><a href="javascript:location.reload()">Réessayer</a>'; });
+</script></body></html>
