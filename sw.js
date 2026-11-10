@@ -1,5 +1,5 @@
 // Service worker AssurImpôts — ne met en cache que la coquille publique et l'app CHIFFRÉE.
-const CACHE_NAME = "assurimpots-202611100609";
+const CACHE_NAME = "assurimpots-202611100615";
 const ASSETS = ["./", "./index.html", "./manifest.json", "./icon.svg", "./apple-touch-icon.png", "./data/app.enc.js"];
 
 self.addEventListener("install", (event) => {

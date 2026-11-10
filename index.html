@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover" />
   <meta name="robots" content="noindex, nofollow" />
   <meta name="referrer" content="no-referrer" />
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
   <meta name="theme-color" content="#0b1120" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-title" content="AssurImpôts" />
@@ -49,7 +50,7 @@
     <div id="msg"></div>
     <div class="foot">Chiffrement AES-256-GCM · PBKDF2-SHA256 600 000 itérations</div>
   </form>
-  <script src="data/app.enc.js?v=202611100609"></script>
+  <script src="data/app.enc.js?v=202611100615"></script>
   <script>
     (function () {
       const KEY_STORE = "assur_unlock_key_v1";
@@ -118,6 +119,10 @@
           return false;
         }
       }
+
+      // Chrome/Safari iOS peuvent réutiliser un onglet déjà ouvert : on relit la clé si l'adresse change
+      window.addEventListener("hashchange", () => { tryLink(); });
+      window.addEventListener("pageshow", (e) => { if (e.persisted) tryLink(); });
 
       tryLink()
         .then((ok) => ok || tryRemembered())
