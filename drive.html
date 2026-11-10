@@ -6,6 +6,6 @@
 </head><body><div id="m">Connexion au Mac…</div>
 <script>
 fetch("https://raw.githubusercontent.com/Mrthomaslef/assurance/main/endpoint.json?t="+Date.now(),{cache:"no-store"})
- .then(r=>r.json()).then(ep=>{ if(!ep.tunnelUrl) throw 0; location.replace(ep.tunnelUrl.replace(/\/$/,"")+"/?mode=drive"); })
+ .then(r=>r.json()).then(ep=>{ const tk=localStorage.getItem("assur_drive_token")||""; if(!ep.tunnelUrl) throw 0; location.replace(ep.tunnelUrl.replace(/\/$/,"")+"/?mode=drive"+(tk?"&t="+encodeURIComponent(tk):"")); })
  .catch(()=>{ document.getElementById("m").innerHTML='Le Mac est hors ligne ou injoignable.<br><br><a href="javascript:location.reload()">Réessayer</a>'; });
 </script></body></html>
